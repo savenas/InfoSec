@@ -14,7 +14,7 @@ Details:
 Start the Struts 2.3.34 environment:
 
 ```
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
 # S2-057-CVE-2018-11776
